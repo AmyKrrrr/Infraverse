@@ -1,42 +1,87 @@
-// src/App.jsx
-
 import React, { useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+// Import all your components
 import HomePage from './pages/HomePage';
 import LoginPopup from './Login/LoginPopup';
+import StudentDashboard from './Dashboard/StudentDashboard';
+import TeacherDashboard from './Dashboard/TeacherDashboard';
+import Quizzes from './StuDash/Quizzes';
+import LiveLectures from './StuDash/LiveLectures';
+// Import Courses and Announcements here as well...
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
-  // This new state will track which form to open: 'student', 'teacher', or null
   const [initialUserType, setInitialUserType] = useState(null);
+  const [user, setUser] = useState(null);
 
-  // For the navbar "Login" button - opens the initial selection screen
-  const handleLoginClick = () => {
-    setInitialUserType(null); // No pre-selection
-    setShowLogin(true);
-  };
-
-  // For the "Start Learning" button - opens the student form directly
-  const handleStartLearningClick = () => {
-    setInitialUserType('student'); // Pre-select 'student'
-    setShowLogin(true);
-  };
-
-  const handleClosePopup = () => {
+  const handleLoginSuccess = (userData) => {
+    setUser(userData);
     setShowLogin(false);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
+  
+  // Handlers to open the login popup
+  const handleLoginClick = () => {
+    setInitialUserType(null);
+    setShowLogin(true);
+  };
+
+  const handleStartLearningClick = () => {
+    setInitialUserType('student');
+    setShowLogin(true);
   };
 
   return (
     <>
-      <HomePage 
-        onLoginClick={handleLoginClick} 
-        onStartLearningClick={handleStartLearningClick} 
-      />
+      <Routes>
+        {/* If user is NOT logged in, show the homepage */}
+        <Route 
+          path="/" 
+          element={
+            !user ? (
+              <HomePage 
+                onLoginClick={handleLoginClick} 
+                onStartLearningClick={handleStartLearningClick} 
+              />
+            ) : (
+              // If user IS logged in, redirect them to their dashboard
+              <Navigate to={user.role === 'student' ? '/student-dashboard' : '/teacher-dashboard'} />
+            )
+          } 
+        />
 
-      {/* Conditionally render the popup and pass the initialUserType prop */}
+        {/* --- Student Routes --- */}
+        <Route 
+          path="/student-dashboard" 
+          element={user?.role === 'student' ? <StudentDashboard onLogout={handleLogout} /> : <Navigate to="/" />} 
+        />
+        <Route 
+          path="/quizzes" 
+          element={user?.role === 'student' ? <Quizzes /> : <Navigate to="/" />} 
+        />
+        <Route 
+          path="/live-lectures" 
+          element={user?.role === 'student' ? <LiveLectures /> : <Navigate to="/" />} 
+        />
+        {/* Add Routes for Courses and Announcements here */}
+
+        {/* --- Teacher Route --- */}
+        <Route 
+          path="/teacher-dashboard" 
+          element={user?.role === 'teacher' ? <TeacherDashboard onLogout={handleLogout} /> : <Navigate to="/" />}
+        />
+      </Routes>
+
+      {/* The Login Popup can still be shown over any page */}
       {showLogin && (
         <LoginPopup 
-          onClose={handleClosePopup} 
-          initialUserType={initialUserType} 
+          onClose={() => setShowLogin(false)} 
+          initialUserType={initialUserType}
+          onLoginSuccess={handleLoginSuccess}
         />
       )}
     </>
