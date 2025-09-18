@@ -1,0 +1,2 @@
+/Users/subrat/Desktop/cpp-backend/cpp-backend/build/CMakeFiles/edit_cache.dir
+/Users/subrat/Desktop/cpp-backend/cpp-backend/build/CMakeFiles/rebuild_cache.dir
