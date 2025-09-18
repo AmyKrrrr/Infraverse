@@ -1,0 +1,220 @@
+/* Import Lexend font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
+/* --- General Reset & Font --- */
+body {
+  font-family: 'Lexend', sans-serif;
+  background-color: #f0f4f8; /* A subtle background to make the glass effect visible */
+}
+
+/* --- Popup Overlay --- */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* --- Popup Content Box (Glass Effect) --- */
+.popup-content {
+  background: rgba(255, 255, 255, 0.2); /* Translucent white background */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white border */
+  padding: 2.5rem 3rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  text-align: center;
+  font-family: 'Lexend', sans-serif;
+  color: #333;
+  animation: fadeInScale 0.3s ease-out forwards;
+  backdrop-filter: blur(20px) saturate(180%); /* Main glass blur effect */
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Entry Animation */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Buttons --- */
+.btn {
+  padding: 14px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  width: 100%;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: #4f46e5;
+  color: white;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+}
+
+.btn-secondary {
+  background-color: #6b7280;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #4b5563;
+  transform: translateY(-2px);
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: #a0a0a0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #666;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #4f46e5;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+/* --- Text & Links --- */
+.user-selection h2, .auth-view h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: #222;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.user-selection p {
+  color: #555;
+  margin-bottom: 1.8rem;
+  line-height: 1.5;
+}
+
+.switch-form-text {
+  margin-top: 1.8rem;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.switch-form-link {
+  color: #4f46e5;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.switch-form-link:hover {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+/* --- Form Styles --- */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Lexend', sans-serif;
+  color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-group input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  outline: none;
+}
+
+.submit-btn {
+  margin-top: 1.5rem;
+}
+
+/* --- Fix for Browser Autofill Background Color --- */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #333 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

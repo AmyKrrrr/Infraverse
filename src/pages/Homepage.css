@@ -1,0 +1,118 @@
+/* Ensure Lexend font is available (or import it in index.css) */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
+.homepage-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #111827; /* Dark background */
+  color: #f9fafb; /* Light text color */
+  font-family: 'Lexend', sans-serif;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 3rem; /* More padding */
+  background-color: rgba(17, 24, 39, 0.8); /* Slightly transparent */
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  border-bottom: 1px solid #374151; /* Subtle border */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Space between logo and title */
+}
+
+.nav-logo {
+  width: 45px;
+  height: 45px;
+  background: #4f46e5; /* Indigo color */
+  border-radius: 10px; /* Squircle shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.nav-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.nav-login-btn {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-login-btn:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  flex-grow: 1; /* Takes up remaining vertical space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.hero-title {
+  font-size: 3rem; /* Big, impactful title */
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #a5b4fc, #f9fafb); /* Gradient text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #d1d5db; /* Lighter grey for subtitle */
+  max-width: 70rem; /* Prevents text from being too wide */
+  margin-top: 1.5rem;
+  line-height: 1.6;
+}
+
+/* --- Style for the new CTA button --- */
+.hero-button {
+  background-color: #4f46e5; /* Same indigo as the logo */
+  color: white;
+  border: none;
+  padding: 14px 32px; /* Larger padding for emphasis */
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 2.5rem; /* Space between subtitle and button */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+}
+
+.hero-button:hover {
+  background-color: #4338ca; /* Darker on hover */
+  transform: translateY(-3px); /* Slight lift effect */
+}
