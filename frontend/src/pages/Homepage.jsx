@@ -10,8 +10,8 @@ const HomePage = ({ onLoginClick, onStartLearningClick }) => {
         <div className="container-fluid">
           {/* Left side: Brand and Logo */}
           <a className="navbar-brand d-flex align-items-center" href="#">
-            <div className="nav-logo">IV</div>
-            <span style={{ marginLeft: "1rem", fontSize: "1.5rem" }}>
+            {/* <div className="nav-logo">IV</div> */}
+            <span style={{ marginLeft: "1rem", fontSize: "1rem" }}>
               InfraVerse
             </span>
           </a>
