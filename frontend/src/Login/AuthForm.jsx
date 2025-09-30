@@ -40,14 +40,14 @@ const AuthForm = ({ userType, formType, onLoginSuccess }) => {
       )}
 
       <div className="form-group">
-        <label htmlFor="email">Email Address</label>
+        <label htmlFor="email">Username/Email</label>
         <input
-          type="email"
+          type="text"
           id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          // "required" attribute removed
+          placeholder="Enter username or email"
         />
       </div>
 
